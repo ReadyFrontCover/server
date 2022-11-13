@@ -25,7 +25,8 @@ const connection = mongoose.createConnection(conn, dbOptions);
 const UserSchema = new mongoose.Schema({
     username: String,
     hash: String,
-    salt: String
+    salt: String,
+    admin: Boolean
 });
 
 
