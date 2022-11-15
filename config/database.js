@@ -26,8 +26,11 @@ const UserSchema = new mongoose.Schema({
     username: String,
     hash: String,
     salt: String,
-    admin: Boolean
+    admin: Boolean,
+    type: String
 });
+
+
 
 
 const User = connection.model('User', UserSchema);

@@ -9,7 +9,7 @@ const connection = require('./config/database');
 // Package documentation - https://www.npmjs.com/package/connect-mongo
 const MongoStore = require('connect-mongo');
 
-const port = 3000
+const port = 5000;
 
 // Create the Express application
 var app = express();
@@ -35,7 +35,7 @@ app.use(express.urlencoded({extended: true}));
 
  const sessionStore = MongoStore.create({
     client: connection.getClient(),
-    dbName: "cookies_tb",
+    dbName: "ready_front",
     collectionName: 'sessions'
 })
 

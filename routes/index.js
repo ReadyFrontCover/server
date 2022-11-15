@@ -24,7 +24,8 @@ const isAdmin = require('./authMiddleware').isAdmin;
         username: req.body.uname,
         hash: hash,
         salt: salt,
-        admin: true
+        admin: false,
+        type: req.body.type
     });
 
     newUser.save()
@@ -61,6 +62,7 @@ router.get('/register', (req, res, next) => {
 
     const form = '<h1>Register Page</h1><form method="post" action="register">\
                     Enter Username:<br><input type="text" name="uname">\
+                    <br>What kind of account?<br><input type="text" name="type">\
                     <br>Enter Password:<br><input type="password" name="pw">\
                     <br><br><input type="submit" value="Submit"></form>';
 
