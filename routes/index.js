@@ -8,7 +8,18 @@ const isAdmin = require('./authMiddleware').isAdmin;
 
 /**
  * -------------- POST ROUTES ----------------
+ * 
  */
+
+router.post('/post', (req, res, next) => {
+    console.log("Connected To Express");
+    res.redirect("/");
+    next();
+})
+
+router.get('/test', (req, res, next) => {
+    res.send('Bret')
+})
 
  // TODO
  router.post('/login', passport.authenticate('local', { failureRedirect: '/login-failure', successRedirect: '/login-success' }));
@@ -57,18 +68,7 @@ router.get('/login', (req, res, next) => {
 
 });
 
-// When you visit http://localhost:3000/register, you will see "Register Page"
-router.get('/register', (req, res, next) => {
 
-    const form = '<h1>Register Page</h1><form method="post" action="register">\
-                    Enter Username:<br><input type="text" name="uname">\
-                    <br>What kind of account?<br><input type="text" name="type">\
-                    <br>Enter Password:<br><input type="password" name="pw">\
-                    <br><br><input type="submit" value="Submit"></form>';
-
-    res.send(form);
-    
-});
 
 /**
  * Lookup how to authenticate users on routes with Local Strategy
@@ -77,7 +77,8 @@ router.get('/register', (req, res, next) => {
  * Also, look up what behaviour express session has without a maxage set
  */
 router.get('/protected-route', isAuth, (req, res, next) => {
-    res.send(`you made it to the route ${req.user.username}`)
+    const name = 'Lavar'
+    res.send(name)
 });
 
 router.get('/admin-route', isAdmin, (req, res, next) => {
